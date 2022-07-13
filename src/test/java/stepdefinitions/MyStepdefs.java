@@ -15,7 +15,7 @@ public class MyStepdefs {
 
     @Given("I am in the login page of the Para Bank Application")
     public void iAmInTheLoginPageOfTheParaBankApplication() {
-        System.getProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "r/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://parabank.parasoft.com/parabank/index.htm");
