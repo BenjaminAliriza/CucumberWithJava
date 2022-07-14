@@ -45,7 +45,7 @@ public class MyStepdefs extends BaseUtil {
         System.out.println(actualFullName);
         System.out.println(baseUtil.userFullName);
 
-        Assertions.assertTrue(actualFullName.contains(userFullName));
+        Assertions.assertTrue(actualFullName.contains(baseUtil.userFullName));
 
         driver.findElement(By.linkText("Log Out")).click();
 

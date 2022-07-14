@@ -10,5 +10,5 @@ Feature: Login Functionality
 
     Examples:
       | username | password |userFullName|
-      |"autotester"|"password"|"John Smith"|
-      |"tautester" |"password"|"John Smith"|
+      |"autotester"|"password"|"qweqwe asdasd"|
+      |"tautester" |"password"|"qweqwe asdasd"|

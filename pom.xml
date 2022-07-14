@@ -71,7 +71,7 @@
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <!-- optional, defaults to outputDirectory if not specified -->
-                            <inputDirectory>${project.build.directory}/cucumber-hmtnl-reports</inputDirectory>
+                            <inputDirectory>${project.build.directory}/cucumber-hmtl-reports</inputDirectory>
                             <jsonFiles>
                                 <!-- supports wildcard or name pattern -->
                                 <param>**/*.json</param>
