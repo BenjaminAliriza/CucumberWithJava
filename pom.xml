@@ -14,49 +14,75 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.9.0-RC1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.3.0</version>
-        </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.4.1</version>
+            <version>7.3.3</version>
+            <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.4.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>7.4.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M7</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.7.0</version>
+                <version>4.11.2</version>
                 <executions>
                     <execution>
                         <id>execution</id>
@@ -66,26 +92,25 @@
                         </goals>
                         <configuration>
                             <projectName>cucumber-jvm-example</projectName>
-                            <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
+                            <!-- optional, per documentation set this to "true" to bypass generation
+                                of Cucumber Reports entirely, defaults to false if not specified -->
                             <skip>false</skip>
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <!-- optional, defaults to outputDirectory if not specified -->
-                            <inputDirectory>${project.build.directory}/cucumber-hmtl-reports</inputDirectory>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <!-- supports wildcard or name pattern -->
                                 <param>**/*.json</param>
                             </jsonFiles>
                             <!-- optional, defaults to outputDirectory if not specified -->
-                            <classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
+                            <classificationDirectory>${project.build.directory}</classificationDirectory>
                             <classificationFiles>
                                 <!-- supports wildcard or name pattern -->
                                 <param>sample.properties</param>
                                 <param>other.properties</param>
                             </classificationFiles>
-                            <mergeFeaturesById>false</mergeFeaturesById>
-                            <!-- optional, set true to get a final report with latest results of the same test from different test runs -->
-                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <parallelTesting>false</parallelTesting>
                             <!-- optional, set true to fail build on test failures -->
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
@@ -93,6 +118,8 @@
                 </executions>
             </plugin>
         </plugins>
+
     </build>
+
 
 </project>
